@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IPM-p1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-27 18:00+0100\n"
+"PO-Revision-Date: 2019-10-27 18:07+0100\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: Manuel Couto Pintos\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#: view.py:132
+msgid "Delete Workout"
+msgstr "Eliminar Rutina"
+
+#: view.py:137 view.py:332
+msgid "Start Training"
+msgstr "Empezar Entrenamiento"
+
+#: view.py:152 view.py:196
+msgid "image"
+msgstr "imagen"
+
+#: view.py:157
+msgid "activity"
+msgstr "ejercicio"
+
+#: view.py:163
+msgid "date"
+msgstr "fecha"
+
+#: view.py:203
+msgid "in Workouts"
+msgstr "en Rutinas"
+
+#: view.py:210
+msgid "repetitions"
+msgstr "repeticiones"
+
+#: view.py:217
+msgid "exercise"
+msgstr "ejercicios"
+
+#: view.py:272
+msgid "Rollback will be applied"
+msgstr "Se aplicará una marcha a tras"
+
+#: view.py:328
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: view.py:355
+msgid "WARNING Are you shure?"
+msgstr "ATENCIÓN Estás seguro?"
+
+#: view.py:357
+msgid " Will be deleted permanently."
+msgstr " Se eliminará permanentemente."
+
+#: view.py:374
+msgid "Database destructive"
+msgstr "Base de datos destructivo"
+
+#: view.py:404
+msgid "Back to Exercises"
+msgstr "Vuelta a Ejercicios"
+
+#: view.py:408 view.py:482 view.py:488 view.py:493 view.py:501
+msgid "Play"
+msgstr "Reproducir"
+
+#: view.py:427
+msgid "count"
+msgstr "cuenta"
+
+#: view.py:430
+msgid "description"
+msgstr "descripción"
+
+#: view.py:477
+msgid "Stop"
+msgstr "Parar"

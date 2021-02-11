@@ -1,0 +1,44 @@
+@startuml
+actor User
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+
+participant "View" as Vi
+participant "Controller" as Ct
+participant "Model" as Md
+
+User -> Vi: delete event
+activate Vi
+
+Vi -> Ct: on delete
+activate Ct
+Ct --> Vi: update view
+== View Continue Normaly ==
+
+Ct -> Ct: thread worker
+
+activate Ct
+
+Ct -> Md: delete
+activate Md
+
+Md --> Ct: state
+deactivate Md
+deactivate Ct
+Ct --> Vi: if fails
+== View change state if operation fails==
+deactivate Ct
+
+User -> Vi: select Workout
+Vi --> User: Dialog db error
+User -> Vi: ok
+
+Vi -> Vi: Rollback view data
+activate Vi
+deactivate Vi
+
+== View recover normal state ==
+@enduml
+

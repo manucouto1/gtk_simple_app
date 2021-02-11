@@ -1,0 +1,137 @@
+@startuml
+(*) --> "
+{{
+salt
+{^"Main View"
+	.|.
+	.|{SI	
+		{#
+		Image | Workout | Date
+		<&image> Image | nombreRutina1 | <&calendar> date1
+		{* <&image> Image } | {* nombreRutina2 } | {* <&calendar> date2 }
+		<&image> Image | nombreRutina3 | <&calendar> date3
+		.. | .. | .. 
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		<&image> ImageN | nombreRutinaN | <&calendar> dateN
+		}
+	}|{SI
+		{#
+		Image | Exercise | Repetitions 
+		<&image> Image1 | exerciseName1 | repetitions1
+		<&image> Image2 | exerciseName2 | repetitions2
+		{* <&image> Image3 } | {* exerciseName3 } | {* repetitions3 }
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | .. 
+		.. | .. | .. 
+		.. | .. | .. 
+		<&image> ImageN | exerciseNameN | repetitionsN 
+		}
+	}
+	.| {[Delete Workout]| [   Reorder   ]}| {[          Watch Video            ]}
+} 
+}} 
+" as main
+
+main -right-> "
+{{
+salt
+{^"Dialog"
+
+	.| {.|.|.|.|.|.|.|.|.|.|.|.|**Ar you shure?**} |.
+	.| {.|.|.|.|.|.|.|.|.|.|.|This is permanent} |.
+	.|{[     Ok     ]|[     Cancel     ]}|.
+} 
+}} 
+" as dialog
+
+
+main -down-> "
+{{
+salt
+{^"Video View"
+
+	.|{+
+	.                                                       
+	. 
+	. 
+	. 
+	.  
+	.
+	.
+	.
+	.
+	.  
+	"                                                                   "
+	}|.
+	.|{[        Back to Workouts          ]|[           Play/Stop           ]}|.
+	.|{+
+	.                                                       
+	.
+	"                                                                   "
+	}|.
+} 
+}} 
+" as video
+
+main -right-> "
+{{
+salt
+{^"Main View"
+	.|.
+	.|{SI	
+		{#
+		Image | Workout | Date
+		<&image> Image | nombreRutina1 | <&calendar> date1
+		{* <&image> Image } | {* nombreRutina2 } | {* <&calendar> date2 }
+		<&image> Image | nombreRutina3 | <&calendar> date3
+		.. | .. | .. 
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		<&image> ImageN | nombreRutinaN | <&calendar> dateN
+		}
+	}|{SI
+		{#
+		Image | Exercise | Repetitions 
+		<&image> Image1 | exerciseName1 | repetitions1
+		<&image> Image2 | exerciseName2 | repetitions2
+		{* <&image> Image3 } | {* exerciseName3 } | {* repetitions3 }
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | ..
+		.. | .. | .. 
+		.. | .. | .. 
+		.. | .. | .. 
+		<&image> ImageN | exerciseNameN | repetitionsN 
+		}
+	}
+	.| {[Delete Workout]| [     Done    ]}| {[       Up      ]|[      Down      ]}
+} 
+}} 
+" as reorder
+
+
+
+
+
+video -up-> main
+dialog -up-> main
+reorder -left-> main
+
+@enduml

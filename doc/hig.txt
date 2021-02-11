@@ -1,0 +1,8 @@
+1 Se resalta en rojo el boton que inicia el proceso de borrado
+    view.py > 121
+2 Se hacen insensibles los botones cuando su pulsación sería herronea
+    view.py > 120, 125
+3 El dialogo de destrucción de contenido tiene cancelar como predeterminado así evitamos la perdida accidental de información
+    view.py > 345
+4 Los botones que están pegados se situan a la misma altura y tienen la misma medida cuando el diseño lo permite 
+    view.py> 122,129,379,384

@@ -1,0 +1,196 @@
+@startuml
+
+    package "View" #DDDDDD {
+
+        class View {
+            +main_box : Main_box
+            +video_box : Video_box
+            +parent_box : Gtk.Box
+            
+            +init_window()
+            +build_view(Gtk.Box)
+            +gtk_main()
+            +start_spinner()
+            +stop_spinner()
+            +show_all()
+            +workout_content_init()
+            +exercise_content_load()
+            +video_content_init()
+            +replace_widget()
+            +connect_warning()
+            +connect_close()
+            +main_quit()
+        }
+
+        class Main_box {
+            +workouts_arrayData : List<Workouts>
+            +workouts_dictData : dic
+            +all_exercises_dicData : dic
+            +exercises_dictData : dic
+
+
+            +build_workout_entries()
+            +workout_init()
+            +workouts_data_to_row(): [Bytes, String, String]
+            
+            +build_exercises_entries()
+            +load_exercises()
+            +get_image()
+            +exercises_data_to_dic()
+            +exercises_data_to_row()
+            
+            +error_dialog()
+            +image2pixbuf()
+            +delete_selected_row()
+            
+            +connect_exercises()
+            +connect_watch()
+            +connect_reorder()
+            +start_spinner()
+            +stop_spinner()
+            
+            +on_workout_selection_changed()
+            +on_exercises_selection_changed()
+            +on_reorder_clicked()
+            +on_cancel_reorder_clicked()
+
+            +on_done_reorder_clicked()
+            +on_reorder_up_clicked()
+            +on_reorder_down_clicked()
+            +on_delete_clicked()
+            +_on_delete_failure_rollback()
+            +rollback_worker()
+            
+            
+        }
+
+        class ExerciseInfo {
+            + id : String
+            + image : pixbuf
+            + name : string
+            + description : List
+            + video : Video
+            + scrolledWindow : ScrolledWindow
+
+            +set_workouts_ocurance()
+            +info_to_row()
+            +row_to_info()
+        }
+
+
+        class Video_box {
+            +playerDic : dict()
+            +init(String, String, Gtk.ScrolledWindow)
+            +build_description_entries()
+            +load_description()
+            +load_videos()
+            +_on_load_video_finish()
+            +activate_play()
+            +_on_play_stop(Widget)
+            _on_message()
+            +connect_back(Callback)
+            +clean()
+        }
+
+
+    }
+
+    class Controller {
+        +model:Model
+        +vista:Vista
+        +set_model(Model model)
+        +set_view(View view)
+        +main()
+        +single_thread()
+        +multy_thread()
+
+        +on_delete_clicked()
+        +on_reorder_clicked()
+        +on_workout_selection_change()
+        +on_back_to_exercises_clicked(Widget)
+        +on_watch_video_clicked(Widget)
+        +on_exit()
+    }
+    
+
+    package "Model" #DDDDDD {
+        
+        class Model {
+            +mongoClient : MongoClient
+            +workoutDao : WorkoutDao
+            +ExerciseDao : exerciseDao
+            +loadDatabase(String database)
+        }
+
+        class ExerciseDao {
+            +table: dict
+            +findByName(String):Exercise
+        }
+
+        class WorkoutDao {
+            +table: dict
+            +findAll(): List<Workout>
+            findWorkOutExercises(): List<String>
+        }
+
+        class Workout {
+            +imagen : Imagen
+            +activity : String
+            +date : String
+        }
+
+        class Exercise {
+            +imagen : Imagen
+            +exercise : String
+            +description: String
+            +video : Video
+        }
+
+        class Image {
+            +imagenString : String 
+            +fromStringToBinary():Binary
+        }
+
+        class Video {
+            +defaultUrl : string 
+            +strVideo : String
+            +my_hook(dic)
+            +fromStringToMp4():String
+            +supported(String):Boolean
+        }
+
+        Class MyLogger{
+            +debug(msg):
+            +warning(msg):
+            +error(msg):
+        }
+    }
+
+    Main_box o--> ExerciseInfo
+
+    Model *--> WorkoutDao
+    WorkoutDao --> Workout
+    Workout o--> Image
+
+    Model *--> ExerciseDao
+    ExerciseDao --> Exercise
+    Exercise o--> Image
+    Exercise o--> Video
+
+    Video --> MyLogger
+    GObject.GObject <|-- MyLogger
+    
+    Controller --> View
+    Controller --> Model
+    View ..> Controller
+
+    View *--> Main_box
+    View *--> Video_box
+
+    Gtk.Box <|-- Main_box
+    Gtk.Box <|-- Video_box
+
+    Gtk.Window <|-- View
+    
+
+@enduml
